@@ -1,0 +1,173 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = pdflatex
+\documentclass[DIV=15,paper=letter,titlepage=true,fontsize=12pt,headings=normal,captions=nooneline]{scrartcl}
+
+%% Configuration de base pour l'encodage et pour la langue:
+%% version du 2014/06/21 pour babel-french
+%% \usepackage{francais-utf8}
+
+% Encodage caractère et fonte
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Langue: français	
+\usepackage[frenchb]{babel}
+\frenchbsetup{og=«,fg=»}
+\usepackage{xspace}
+
+% Utilisation de \nombre
+\usepackage[autolanguage]{numprint} 
+%% Fin pour encodage et langue
+
+\usepackage[automark,markcase=upper]{scrlayer-scrpage}
+\usepackage[protrusion=true,expansion]{microtype}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{array,booktabs,longtable,tabularx}
+\usepackage{arydshln}
+\usepackage{dashrule}
+\usepackage[squaren,cdot,textstyle]{SIunits}
+\usepackage{ccicons}
+\usepackage{enumerate}
+\usepackage{url}
+
+\usepackage{xcolor}
+\definecolor{myred}{rgb}{.7,.13,.13}
+\definecolor{myyellow}{rgb}{1,1,.79}
+\definecolor{monbleu}{rgb}{.2,.4,.8}
+
+\definecolor{vertUdS}{RGB}{0,119,73} % Pantone vert 3415
+\definecolor{bleuTetrad}{RGB}{0,45,117} % Pantone Tetrad
+\definecolor{rougTetrad}{RGB}{117,0,45} % Pantone Tetrad
+\definecolor{oranTetrad}{RGB}{117,72,0} % Pantone Tetrad
+
+% Sérif: lining figures in math, osf in text
+\usepackage[scaled=.98,sups]{XCharter}% 
+% Sans sérif:
+\usepackage[scaled=0.90]{helvet}%
+% Mono:
+\usepackage[scaled=0.85]{beramono}
+% Math:
+\usepackage[charter,bigdelims,vvarbb,scaled=1.07]{newtxmath}
+\usepackage[cal=boondoxo]{mathalfa} % doc à regarder: intéressant.
+
+% Math: autre \usepackage[osf,sc]{mathpazo}
+
+\linespread{1.1}
+
+% À voir:
+%\DeclareFixedFont{\FonteTitre}{T1}{phv}{b}{n}{48pt}
+\usepackage{pifont}
+\usepackage[os=mac]{menukeys}
+
+%% Dimension de la page:
+%\setlength{\textheight}{672pt}
+%\setlength{\footskip}{24pt}
+
+% Réglage de certaine apparence:
+% Caption
+\setkomafont{caption}{\sffamily}
+\setkomafont{captionlabel}{\bfseries}
+\setcapindent{0em}
+% titre: section et autre
+\addtokomafont{section}{%
+	\color{rougTetrad}%
+	\usesizeofkomafont{subsection}%
+	}%
+% Entête et pied de page:
+\ihead{}
+\chead{}
+\ohead{\sffamily\scriptsize\scshape\textls[150]{\headmark}}
+\ifoot{}
+\cfoot{}
+\ofoot{\normalfont\sffamily\small\thepage}
+\renewcommand*{\sectionmarkformat}{}% pas de numéro de section
+
+% Pas d'indentation
+\setlength{\parindent}{0pt}
+
+\begin{document}
+%%% Titre
+\thispagestyle{empty}
+\noindent
+\begin{center}
+{\bfseries\sffamily \textls[150]{Université de Sherbrooke}\\[4pt] \textls[75]{Département de génie électrique et de génie informatique}}
+
+\vspace{3cm}
+\textsf{\large Session S6e 2025}
+
+\vspace{.5cm}
+\textsf{\Large Rapport de l'unité 6}
+
+\vspace{.25cm}
+\textsf{\footnotesize remis le jour mois 2024}
+
+\end{center}
+\vfill
+
+\noindent
+\rule{\linewidth}{.8pt}
+
+\noindent
+Nom 1, Prénom 1 \hfill CIP 1\\
+Nom 2, Prénom 2 \hfill CIP 2\\
+
+\newpage
+\section{Introduction}
+Le rapport propose une démarche afin de vous guider dans la problématique
+
+\section{Ligne principale: 20 points}
+%Ok, le contexte n'est pas clair: en 2024: précision pour la section 2.1: dans la question, on cherche à reproduire de façon manuelle soit la figure 1 soit la figure 2 du guide étudiant (à votre choix). Vous pouvez ne pas aller jusqu'à 20ns si vous justifiez le pourquoi.
+
+On considère un circuit (voir figure 1a de la problématique) avec la même source, la même résistance de source. La ligne de transmission utilisé est \menu{TLIND} dans la librairie \menu{Tlines-Ideal}. On choisira l'impédance caractéristique à \unit{50}{\ohm} et un temps de propagation à \unit{1}{\nano\sec}. La charge capacitive est remplacée par un circuit ouvert, soit une résistance de forte valeur ($R2$ sur la figure).
+\begin{enumerate}
+	\item Faites les démarches et calculs nécessaires pour tracer les tensions $V_1(t)$ et $V_2(t)$ pour $0\leq t\leq \unit{20}{\nano\sec}$ données à la Figure~1a du guide étudiant. Laisser les traces de vos calculs et valider avec la simulation donnée à la Figure~1b.
+	\item Par simulation, changer le temps tRise tel que tRiseb=tFall et $\textrm{tWidth (ns)} = 5 - \textrm{tRise} - \textrm{tFall}$. Présenter vos résultat sur une figure. Est-ce une piste de solution pour résoudre le problème sur la ligne principale?
+	\item Par simulation, changer le délai sur la ligne. Présenter vos résultat sur une figure. Est-ce une piste de solution pour résoudre le problème  sur la ligne principale?
+\end{enumerate}
+
+\paragraph{Barème} 
+\begin{enumerate}
+	\item représentation théorique des signaux V1 et V2: 10 points
+	\item Simulation avec variations du temps de montée et descente du signal numérique et explications: 5 points
+	\item Simulations avec variations du temps de propagation et explications:  5 points
+\end{enumerate}
+
+
+\section{Lignes principale et secondaire: 20 points}
+On utilise le circuit de la figure~4a de la problématique avec la même source, la même résistance de source. La charge capacitive est remplacée par un circuit ouvert, soit une résistance de forte valeur ($R2$ sur la figure).
+
+La ligne de transmission utilisé est \menu{CLIN} dans la librairie \menu{Tlines-Ideal}.
+
+\begin{enumerate} 
+	\item Déterminer les dimensions de la ligne pour obtenir une impédance caractéristique de \unit{50}{\ohm} (ne pas oublier qu'il y a deux rubans).
+	\item Si on adapte en entrée ou en sortie (mettre le résultat de vos simulations), quelles tensions sont améliorées?
+	\item Peut-on améliorer les autres tensions en jouant sur les temps de montée et de descente ? Donner votre meilleur résultat de simulation et expliquer les problèmes résiduels.
+\end{enumerate}
+
+\paragraph{Points} 
+\begin{enumerate}
+	\item Résultats des valeurs obtenues pour avoir une ligne à \unit{50}{\ohm}: 5 points
+	\item Adaptation en entrée et en sortie, meilleur choix et explications: 10 points
+	\item Amélioration des autres tensions: méthodes et explications: 5 points
+\end{enumerate}
+
+\section{Circuit final: 10 points}
+Trouver une méthode permettant d'améliorer significativement le problème restant et montrer le résultat par simulation.
+
+\paragraph{Points} 
+\begin{enumerate}
+	\item Méthode proposée: 2 points
+	\item Démonstration par simulation que cela semble fonctionner: 8 points
+\end{enumerate}
+
+\section{Conclusion: 10 points}
+Donner les pistes de solutions pour résoudre la problématique pour le client. Selon votre avis, faudra-t-il refaire le PCB ?
+
+\paragraph{Points} 
+\begin{enumerate}
+	\item Pistes de solution: 5 points
+	\item Justification pour refaire le PCB (rester dans le cadre de la problématique): 5 points
+\end{enumerate}
+
+\end{document}
